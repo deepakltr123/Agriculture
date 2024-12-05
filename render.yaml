@@ -2,9 +2,7 @@ services:
   - type: web
     name: harvestify
     env: python
-    pythonVersion: 3.9  # Ensure a compatible Python version
     buildCommand: |
-      pip install --upgrade pip setuptools wheel
-      pip install scikit-learn==1.3.0
+      apt-get update && apt-get install -y build-essential cython
       pip install -r requirements.txt
     startCommand: gunicorn app:app
